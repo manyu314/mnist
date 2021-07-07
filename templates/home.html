@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+	
+body{
+	background-color: rgba(0, 0, 0,0.8);
+	::after
+}
+
+h1{
+	color: white;
+	text-align: left;
+	font-size: 45px;
+}
+
+hr{
+	background-color: whitesmoke;
+	height: 4px;
+	border-width: 0;
+}
+
+h2{
+	color: white;
+	font-size: 25px;
+}
+
+h3{
+	color: white;
+	font-size: 25px;
+}
+</style>
+<body>
+<h1>DIGIT RECOGNIZER</h1>
+<hr>
+<br>
+<h2> Upload a image with a digit between 0-9</h2>
+
+<form action='/predict' id='upload-form' method="POST" enctype="multipart/form-data">
+	<input type='file' name='file' accept="image/*" multiple><br><br>
+{% if filename %}
+	<div>
+		<img src="{{ url_for('static', filename=filename) }}">
+	</div>
+{% endif %}
+
+	<input type='submit' value='Submit'>
+</form>
+
+{% if filename %}
+<h3> The Number is {{ result }}</h3>
+{% endif %}
+
+</body>
+</html>
